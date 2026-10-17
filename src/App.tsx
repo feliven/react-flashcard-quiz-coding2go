@@ -1,9 +1,18 @@
+import { useState } from "react";
+
 function App() {
-  function handleClick() {
-    alert("hi");
+  const [counter, setCounter] = useState(0);
+
+  function increaseCounterHandler() {
+    setCounter(counter + 1);
   }
 
-  return <button onClick={handleClick}>Hello theeere</button>;
+  return (
+    <>
+      <h1>{counter}</h1>
+      <button onClick={increaseCounterHandler}>Click to increase</button>
+    </>
+  );
 }
 
 export default App;
