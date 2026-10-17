@@ -5,6 +5,7 @@ body {
 main {
   background-color: greenyellow;
   width: min(300px, 100vw);
+  height: min(400px, 100vh);
   margin: auto;
   padding: 1.5rem;
   border-radius: 1rem;
@@ -91,4 +92,20 @@ header {
   background-color: mediumaquamarine;
   text-align: center;
   margin: auto;
+}
+
+.finished {
+  background-color: gold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  height: min(calc(400px - 2rem), calc(100vh - 2rem));
+
+  button {
+    height: 3rem;
+    width: 10rem;
+    border-radius: 1rem;
+    margin: auto;
+  }
 }

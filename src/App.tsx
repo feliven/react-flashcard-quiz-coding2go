@@ -14,7 +14,7 @@ function shuffle<T>(items: T[]): T[] {
 }
 
 function App() {
-  const [cards, _setCards] = useState(() => shuffle(flashcards));
+  const [cards, setCards] = useState(() => shuffle(flashcards));
   const [cardIndex, setCardIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
@@ -38,7 +38,28 @@ function App() {
 
       setCardIndex(cardIndex + 1);
       setSelectedOption(null);
-    }, 1000);
+    }, 500);
+  }
+
+  function handleReset() {
+    setCards(shuffle(flashcards));
+    setCardIndex(0);
+    setScore(0);
+    setSelectedOption(null);
+    setFinished(false);
+  }
+
+  if (finished) {
+    return (
+      <main>
+        <div className="finished">
+          <h1>Game over!</h1>
+          <h2>Final score:</h2>
+          <h2>{score}</h2>
+          <button onClick={handleReset}>Start over</button>
+        </div>
+      </main>
+    );
   }
 
   return (
