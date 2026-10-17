@@ -5,11 +5,12 @@ import AnswerOption from "./component/AnswerOption";
 function App() {
   const [cardIndex, setCardIndex] = useState(0);
   const [score, setScore] = useState(0);
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const currentCard = flashcards[cardIndex];
 
   function handleAnswer(selectedAnswer: string) {
-    console.log(selectedAnswer);
+    setSelectedOption(selectedAnswer);
 
     if (selectedAnswer !== currentCard.back) {
       setScore(0);
@@ -22,7 +23,11 @@ function App() {
     }
 
     setScore(score + 1);
-    setCardIndex(cardIndex + 1);
+
+    setTimeout(() => {
+      setCardIndex(cardIndex + 1);
+      setSelectedOption(null);
+    }, 1000);
   }
 
   return (
@@ -40,7 +45,13 @@ function App() {
 
       <div className="answers">
         {currentCard.options.map((option) => (
-          <AnswerOption key={option} option={option} onAnswer={handleAnswer} />
+          <AnswerOption
+            key={option}
+            option={option}
+            onAnswer={handleAnswer}
+            correctAnswer={currentCard.back}
+            selectedAnswer={selectedOption}
+          />
         ))}
       </div>
 
