@@ -69,8 +69,16 @@ function App() {
         <div className="finished">
           <h1>Game over!</h1>
           <h2>Final score:</h2>
-          <h2>{score}</h2>
-          <button onClick={handleReset}>Start over</button>
+          <h3>{score}</h3>
+          <button
+            onClick={() =>
+              setTimeout(() => {
+                handleReset();
+              }, 500)
+            }
+          >
+            Start over
+          </button>
         </div>
       </main>
     );
@@ -81,7 +89,7 @@ function App() {
       <header>
         <h1>Quiz</h1>
         <span>
-          Score <strong>{score}</strong>
+          Score: <strong>{score}</strong>
         </span>
       </header>
 
