@@ -13,8 +13,15 @@ function shuffle<T>(items: T[]): T[] {
   return shuffled;
 }
 
+function createShuffledDeck() {
+  return shuffle(flashcards).map((card) => ({
+    ...card,
+    options: shuffle(card.options),
+  }));
+}
+
 function App() {
-  const [cards, setCards] = useState(() => shuffle(flashcards));
+  const [cards, setCards] = useState(createShuffledDeck);
   const [cardIndex, setCardIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
@@ -28,7 +35,13 @@ function App() {
     }
 
     setSelectedOption(selectedAnswer);
-    setScore(selectedAnswer === currentCard.back ? score + 1 : 0);
+
+    const isAnswerCorrect = selectedAnswer === currentCard.back;
+    setScore(isAnswerCorrect ? score + 1 : 0);
+
+    if (!isAnswerCorrect) {
+      return;
+    }
 
     setTimeout(() => {
       if (cardIndex === cards.length - 1) {
@@ -42,7 +55,7 @@ function App() {
   }
 
   function handleReset() {
-    setCards(shuffle(flashcards));
+    setCards(createShuffledDeck());
     setCardIndex(0);
     setScore(0);
     setSelectedOption(null);
