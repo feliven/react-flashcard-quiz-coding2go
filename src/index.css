@@ -39,6 +39,51 @@ header {
   button {
     height: 3rem;
     border-radius: 1rem;
+
+    &.correct {
+      background-color: limegreen;
+      color: white;
+      font-weight: bold;
+      position: relative;
+
+      &::after {
+        content: "Correct!";
+        background-color: green;
+        font-weight: normal;
+        width: 4.5rem;
+        border: 1px solid black;
+
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: -20%;
+        right: 5%;
+        border-radius: 1rem;
+      }
+    }
+
+    &.incorrect {
+      background-color: red;
+      color: white;
+      position: relative;
+
+      &::after {
+        content: "Incorrect!";
+        background-color: crimson;
+        font-weight: normal;
+        width: 4.5rem;
+        border: 1px solid black;
+
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: -20%;
+        right: 5%;
+        border-radius: 1rem;
+      }
+    }
   }
 }
 

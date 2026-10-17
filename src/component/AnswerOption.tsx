@@ -3,10 +3,10 @@ type AnswerOptionProps = {
   onAnswer: (option: string) => void;
 };
 
-function AnswerOption(props: AnswerOptionProps) {
+function AnswerOption({ option, onAnswer }: AnswerOptionProps) {
   return (
-    <button key={props.option} onClick={() => props.onAnswer(props.option)}>
-      {props.option}
+    <button className="correct" key={option} onClick={() => onAnswer(option)}>
+      {option}
     </button>
   );
 }
