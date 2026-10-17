@@ -1,5 +1,9 @@
-const html = <button onClick={() => alert("hi")}>Hello theeere</button>;
+function App() {
+  function handleClick() {
+    alert("hi");
+  }
 
-export default function App() {
-  return html;
+  return <button onClick={handleClick}>Hello theeere</button>;
 }
+
+export default App;
