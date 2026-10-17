@@ -1,5 +1,6 @@
 import { useState } from "react";
 import flashcards from "./data";
+import AnswerOption from "./component/AnswerOption";
 
 function App() {
   const [cardIndex, setCardIndex] = useState(0);
@@ -39,9 +40,7 @@ function App() {
 
       <div className="answers">
         {currentCard.options.map((option) => (
-          <button key={option} onClick={() => handleAnswer(option)}>
-            {option}
-          </button>
+          <AnswerOption key={option} option={option} onAnswer={handleAnswer} />
         ))}
       </div>
 
