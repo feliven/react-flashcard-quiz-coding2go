@@ -27,7 +27,7 @@ function App() {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [finished, setFinished] = useState(false);
 
-  const maxRounds = 3;
+  const maxRounds = 10;
   const currentCard = cards[cardIndex];
 
   function handleAnswer(selectedAnswer: string) {
