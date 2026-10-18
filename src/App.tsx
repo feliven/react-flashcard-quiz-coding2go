@@ -31,7 +31,8 @@ function App() {
   const currentCard = cards[cardIndex];
 
   function handleAnswer(selectedAnswer: string) {
-    if (finished) {
+    // Ignore clicks if the game is over or the correct answer has already been chosen
+    if (finished || selectedOption === currentCard.back) {
       return;
     }
 
@@ -52,7 +53,7 @@ function App() {
 
       setCardIndex(cardIndex + 1);
       setSelectedOption(null);
-    }, 500);
+    }, 350);
   }
 
   function handleReset() {
@@ -74,7 +75,7 @@ function App() {
             onClick={() =>
               setTimeout(() => {
                 handleReset();
-              }, 500)
+              }, 350)
             }
           >
             Start over
